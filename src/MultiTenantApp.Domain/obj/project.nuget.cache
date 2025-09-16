@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3E4DCWM6k/A=",
+  "dgSpecHash": "SduEpcNEwYM=",
   "success": true,
-  "projectFilePath": "d:\\Github\\Attendance\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\prakr\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.304\\microsoft.net.sdk.compilers.toolset.9.0.304.nupkg.sha512"
+  ],
   "logs": []
 }

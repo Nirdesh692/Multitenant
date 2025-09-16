@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Xq2Z4S6V3eQ=",
+  "dgSpecHash": "jJ6hn2A7JVI=",
   "success": true,
-  "projectFilePath": "d:\\Github\\Attendance\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
+  "projectFilePath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Nirdesh\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+    "C:\\Users\\prakr\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\prakr\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.304\\microsoft.net.sdk.compilers.toolset.9.0.304.nupkg.sha512"
   ],
   "logs": []
 }
