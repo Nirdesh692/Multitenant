@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MultiTenantApp.Domain.Entities;
+using MultiTenantApp.Domain.Interfaces;
 
 namespace MultiTenantApp.Infrastructure.Services
 {
-    public class JWTService
+    public class JWTProvider:IJWTProvider
     {
         private readonly IConfiguration _configuration;
-        public JWTService(IConfiguration configuration)
+        public JWTProvider(IConfiguration configuration)
         {
             _configuration = configuration;
         }

@@ -5,7 +5,7 @@ using MultiTenantApp.Domain.Entities;
 
 namespace MultiTenantApp.Domain.Interfaces
 {
-    public interface IJWTInterface
+    public interface IJWTProvider
     {
         string Generate(User user, IList<string> roles);
         string GenerateRefreshToken();

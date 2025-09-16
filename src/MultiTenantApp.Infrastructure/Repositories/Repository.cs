@@ -8,47 +8,109 @@ using MultiTenantApp.Domain.Interfaces;
 
 namespace MultiTenantApp.Infrastructure.Repositories;
 
-public class Repository<T> : IRepository<T> where T : class
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
-    protected readonly DbContext _context;
-    protected readonly DbSet<T> _dbSet;
+    private readonly DbContext _context;
+    private readonly DbSet<TEntity> _dbSet;
 
     public Repository(DbContext context)
     {
         _context = context;
-        _dbSet = context.Set<T>();
+        _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<T?> GetByIdAsync(Guid id)
+    public async Task AddRange(List<TEntity> entities) => await _dbSet.AddRangeAsync(entities);
+
+    public async Task AddAsync(TEntity entity) => await _dbSet.AddAsync(entity);
+
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter)
     {
-        return await _dbSet.FindAsync(id);
+        return await _dbSet.AnyAsync(filter);
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbSet.CountAsync(predicate);
+    }
+
+    public void Delete(TEntity entity) => _dbSet.Remove(entity);
+
+    public async Task DeleteAllAsync()
+    {
+        var alldelete = await _dbSet.ToListAsync();
+        _dbSet.RemoveRange(alldelete);
+    }
+
+    public void DeleteRange(List<TEntity> entities) => _dbSet.RemoveRange(entities);
+
+    public async Task<IEnumerable<TEntity>> GetAllAsync()
     {
         return await _dbSet.ToListAsync();
     }
 
-    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+    public IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+    {
+        IQueryable<TEntity> query = _dbSet;
+        if (includeProperties != null && includeProperties.Any())
+        {
+            foreach (var property in includeProperties)
+            {
+                query = query.Include(property);
+            }
+        }
+        return query;
+    }
+
+    public async Task<TEntity> GetByGuidAsync(Guid id)
+    {
+        return await _dbSet.FindAsync(id);
+    }
+
+    public async Task<TEntity> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
+
+    public async Task<IEnumerable<TEntity>> GetConditionalAsync(Expression<Func<TEntity, bool>> predicate)
     {
         return await _dbSet.Where(predicate).ToListAsync();
     }
 
-    public async Task<T> AddAsync(T entity)
-    {
-        await _dbSet.AddAsync(entity);
-        return entity;
-    }
+    public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> predicate) => await _dbSet.SingleAsync(predicate);
 
-    public Task UpdateAsync(T entity)
+    public async void Update(TEntity entity)
     {
         _dbSet.Update(entity);
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
-    public Task DeleteAsync(T entity)
+    public IQueryable<TEntity> GetAllForQuery()
     {
-        _dbSet.Remove(entity);
-        return Task.CompletedTask;
+        return _dbSet.AsQueryable();
     }
+
+    public IQueryable<TEntity> GetConditionalForQuery(Expression<Func<TEntity, bool>> predicate)
+    {
+        return _dbSet.Where(predicate).AsQueryable();
+    }
+
+    public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbSet.FirstOrDefaultAsync(predicate);
+    }
+
+    public async Task<TEntity> FirstOrDefault()
+    {
+        return await _dbSet.FirstOrDefaultAsync();
+    }
+    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null)
+    {
+        IQueryable<TEntity> query = _context.Set<TEntity>();
+
+        if (predicate != null)
+        {
+            query = query.Where(predicate);
+        }
+
+        return await query.ToListAsync();
+    }
+
+
 }
