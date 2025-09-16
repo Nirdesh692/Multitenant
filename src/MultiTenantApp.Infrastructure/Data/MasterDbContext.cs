@@ -8,12 +8,15 @@ namespace MultiTenantApp.Infrastructure.Data;
 
 public class MasterDbContext : IdentityDbContext<User, IdentityRole<Guid> , Guid>
 {
+    public MasterDbContext() { }
     public MasterDbContext(DbContextOptions<MasterDbContext> options) : base(options) { }
 
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<User> User { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Tenant>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -24,6 +27,12 @@ public class MasterDbContext : IdentityDbContext<User, IdentityRole<Guid> , Guid
             entity.Property(e => e.Password).HasMaxLength(255);
             entity.Property(e => e.UseWindowsAuth).IsRequired();
             entity.Property(e => e.FrontendUrl).IsRequired().HasMaxLength(500);
+        });
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.UserName).IsRequired().HasMaxLength(20);
+            entity.Property(e => e.Email).IsRequired().HasMaxLength(40);
         });
     }
 }

@@ -343,3 +343,8 @@ D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\tr\M
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\obj\Debug\net9.0\MultiTenantApp.API.MvcApplicationPartsAssemblyInfo.cs
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Json.dll
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.API\bin\Debug\net9.0\Microsoft.Extensions.FileSystemGlobbing.dll
