@@ -1,9 +1,12 @@
+using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MultiTenantApp.Domain.Entities;
 
 namespace MultiTenantApp.Infrastructure.Data;
 
-public class TenantDbContext : DbContext
+public class TenantDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public TenantDbContext(DbContextOptions<TenantDbContext> options) : base(options) { }
 

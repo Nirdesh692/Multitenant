@@ -21,3 +21,4 @@ D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\M
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\refint\MultiTenantApp.Domain.dll
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.pdb
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\ref\MultiTenantApp.Domain.dll
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.csproj.AssemblyReference.cache
