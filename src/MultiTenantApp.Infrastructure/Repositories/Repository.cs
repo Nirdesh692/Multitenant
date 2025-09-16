@@ -63,10 +63,10 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public async Task<TEntity> GetByGuidAsync(Guid id)
     {
-        return await _dbSet.FindAsync(id);
+        return (await _dbSet.FindAsync(id))!;
     }
 
-    public async Task<TEntity> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
+    public async Task<TEntity> GetByIdAsync(Guid id) => (await _dbSet.FindAsync(id))!;
 
     public async Task<IEnumerable<TEntity>> GetConditionalAsync(Expression<Func<TEntity, bool>> predicate)
     {
@@ -100,7 +100,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         return (await _dbSet.FirstOrDefaultAsync())!;
     }
-    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null)
+    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate)
     {
         IQueryable<TEntity> query = _context.Set<TEntity>();
 
