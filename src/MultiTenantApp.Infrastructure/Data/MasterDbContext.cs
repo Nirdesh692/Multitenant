@@ -1,14 +1,17 @@
+using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MultiTenantApp.Domain.Entities;
 
 namespace MultiTenantApp.Infrastructure.Data;
 
-public class MasterDbContext : DbContext
+public class MasterDbContext : IdentityDbContext<User, IdentityRole<Guid> , Guid>
 {
     public MasterDbContext(DbContextOptions<MasterDbContext> options) : base(options) { }
 
     public DbSet<Tenant> Tenants { get; set; }
-
+    public DbSet<User> User { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Tenant>(entity =>

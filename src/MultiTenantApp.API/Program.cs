@@ -55,7 +55,6 @@ builder.Services.AddScoped<TenantDbContext>(provider =>
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITenantApplicationService, TenantApplicationService>();
-builder.Services.AddScoped<IUserApplicationService, UserApplicationService>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
