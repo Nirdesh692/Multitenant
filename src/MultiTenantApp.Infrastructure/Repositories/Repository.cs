@@ -93,12 +93,12 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
     {
-        return await _dbSet.FirstOrDefaultAsync(predicate);
+        return (await _dbSet.FirstOrDefaultAsync(predicate))!;
     }
 
     public async Task<TEntity> FirstOrDefault()
     {
-        return await _dbSet.FirstOrDefaultAsync();
+        return (await _dbSet.FirstOrDefaultAsync())!;
     }
     public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null)
     {
