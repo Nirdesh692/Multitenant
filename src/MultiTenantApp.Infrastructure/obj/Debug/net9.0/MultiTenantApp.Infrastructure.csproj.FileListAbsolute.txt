@@ -17,12 +17,6 @@ d:\Github\Attendance\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\refint\M
 d:\Github\Attendance\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.pdb
 d:\Github\Attendance\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.genruntimeconfig.cache
 d:\Github\Attendance\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\ref\MultiTenantApp.Infrastructure.dll
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.csproj.AssemblyReference.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.AssemblyInfoInputs.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.AssemblyInfo.cs
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.csproj.CoreCompileInputs.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.sourcelink.json
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Infrastructure.deps.json
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Infrastructure.runtimeconfig.json
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Infrastructure.dll
@@ -31,6 +25,12 @@ D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Domain.dll
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Domain.pdb
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\bin\Debug\net9.0\MultiTenantApp.Application.pdb
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.csproj.AssemblyReference.cache
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.AssemblyInfoInputs.cache
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.AssemblyInfo.cs
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.csproj.CoreCompileInputs.cache
+D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.sourcelink.json
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTen.50D3A3F8.Up2Date
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\MultiTenantApp.Infrastructure.dll
 D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Infrastructure\obj\Debug\net9.0\refint\MultiTenantApp.Infrastructure.dll

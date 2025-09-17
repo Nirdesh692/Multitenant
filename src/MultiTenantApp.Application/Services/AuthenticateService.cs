@@ -10,7 +10,7 @@ using MultiTenantApp.Domain.Interfaces;
 
 namespace MultiTenantApp.Application.Services
 {
-    public class AuthenticationService: IAuthenticateService
+    public class AuthenticateService: IAuthenticateService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<User> _userManager;
@@ -18,7 +18,7 @@ namespace MultiTenantApp.Application.Services
         private readonly SignInManager<User> _signInManager;
         // private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthenticationService(IUnitOfWork unitOfWork, UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, SignInManager<User> signInManager)
+        public AuthenticateService(IUnitOfWork unitOfWork, UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, SignInManager<User> signInManager)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;

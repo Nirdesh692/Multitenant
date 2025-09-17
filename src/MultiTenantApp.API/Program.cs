@@ -1,15 +1,19 @@
-using System;
+﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MultiTenantApp.Application.Interfaces;
 using MultiTenantApp.Application.Services;
+using MultiTenantApp.Domain.Entities;
 using MultiTenantApp.Domain.Interfaces;
 using MultiTenantApp.Infrastructure.Data;
+using MultiTenantApp.Infrastructure.DataSeeder;
 using MultiTenantApp.Infrastructure.Repositories;
 using MultiTenantApp.Infrastructure.Services;
 
@@ -23,6 +27,22 @@ builder.Services.AddSwaggerGen();
 // Add DbContexts
 builder.Services.AddDbContext<MasterDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterConnection")));
+builder.Services.AddIdentity<User, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<MasterDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer();
+builder.Services.AddScoped<IJWTProvider, JWTProvider>();
+
+
+// Register DataSeeder 
+builder.Services.AddScoped<DateSeeder>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>(); 
 
 builder.Services.AddScoped<TenantDbContext>(provider =>
 {
