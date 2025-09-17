@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using MultiTenantApp.Domain.Entities;
 using MultiTenantApp.Infrastructure.Data;
 
 namespace MultiTenantApp.Infrastructure.DataSeeder
 {
-    public class DateSeeder
+    public class DataSeeder
     {
         private readonly MasterDbContext _masterDbContext;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly UserManager<User> _userManager;
 
-        public DateSeeder(MasterDbContext context, RoleManager<IdentityRole<Guid>> roleManager, UserManager<User> userManager)
+        public DataSeeder(MasterDbContext context, RoleManager<IdentityRole<Guid>> roleManager, UserManager<User> userManager)
         {
             _masterDbContext = context;
             _roleManager = roleManager;
@@ -33,7 +34,6 @@ namespace MultiTenantApp.Infrastructure.DataSeeder
                 }
                 catch (Exception)
                 {
-                    scope.Dispose();
                     throw;
                 }
             }
@@ -41,7 +41,7 @@ namespace MultiTenantApp.Infrastructure.DataSeeder
 
         public async Task SeedUsers()
         {
-            if(_masterDbContext.User.Any())
+            if(_masterDbContext.Users.Any())
                 return;
             var roles = new IdentityRole<Guid>() { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" };
 
@@ -64,7 +64,6 @@ namespace MultiTenantApp.Infrastructure.DataSeeder
                 await _userManager.AddToRoleAsync(superAdmin, roles.Name);
                 await _masterDbContext.SaveChangesAsync();
             }
-
         }
     }
 }

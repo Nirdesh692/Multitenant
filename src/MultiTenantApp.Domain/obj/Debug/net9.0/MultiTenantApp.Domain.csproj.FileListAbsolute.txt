@@ -9,16 +9,3 @@ d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.D
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\refint\MultiTenantApp.Domain.dll
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.pdb
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\ref\MultiTenantApp.Domain.dll
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.deps.json
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.dll
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.pdb
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.csproj.AssemblyReference.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.AssemblyInfoInputs.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.AssemblyInfo.cs
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.csproj.CoreCompileInputs.cache
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.sourcelink.json
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.dll
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\refint\MultiTenantApp.Domain.dll
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.pdb
-D:\PersonalProjects\att\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\ref\MultiTenantApp.Domain.dll

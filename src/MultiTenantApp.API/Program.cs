@@ -27,6 +27,7 @@ builder.Services.AddSwaggerGen();
 // Add DbContexts
 builder.Services.AddDbContext<MasterDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterConnection")));
+
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<MasterDbContext>()
     .AddDefaultTokenProviders();
@@ -38,11 +39,13 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer();
 builder.Services.AddScoped<IJWTProvider, JWTProvider>();
-
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+builder.Services.AddScoped<ITenantService, TenantService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ITenantApplicationService, TenantApplicationService>();
 
 // Register DataSeeder 
-builder.Services.AddScoped<DateSeeder>();
-builder.Services.AddScoped<IAuthenticateService, AuthenticateService>(); 
+builder.Services.AddScoped<DataSeeder>();
 
 builder.Services.AddScoped<TenantDbContext>(provider =>
 {
@@ -72,9 +75,7 @@ builder.Services.AddScoped<TenantDbContext>(provider =>
 });
 
 // Add services
-builder.Services.AddScoped<ITenantService, TenantService>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<ITenantApplicationService, TenantApplicationService>();
+
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
@@ -98,7 +99,9 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var masterContext = scope.ServiceProvider.GetRequiredService<MasterDbContext>();
-    masterContext.Database.EnsureCreated();
+    masterContext.Database.EnsureCreatedAsync();
+    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+    await seeder.SeedDatabase();
 }
 
 app.Run();
