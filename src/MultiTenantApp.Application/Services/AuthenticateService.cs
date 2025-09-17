@@ -16,7 +16,6 @@ namespace MultiTenantApp.Application.Services
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly SignInManager<User> _signInManager;
-        // private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AuthenticateService(IUnitOfWork unitOfWork, UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, SignInManager<User> signInManager)
         {
@@ -24,7 +23,6 @@ namespace MultiTenantApp.Application.Services
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            //  _httpContextAccessor = httpContextAccessor;
         }
         public async Task<bool> RegisterUserAsync(RegisterDto registerUserDto)
         {

@@ -43,12 +43,21 @@ namespace MultiTenantApp.Infrastructure.DataSeeder
         {
             if(_masterDbContext.Users.Any())
                 return;
-            var roles = new IdentityRole<Guid>() { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" };
-
-            var roleExist = await _roleManager.RoleExistsAsync(roles.Name);
-            if (!roleExist)
+            
+            // Create SuperAdmin role
+            var superAdminRole = new IdentityRole<Guid>() { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" };
+            var superAdminRoleExist = await _roleManager.RoleExistsAsync(superAdminRole.Name);
+            if (!superAdminRoleExist)
             {
-                await _roleManager.CreateAsync(roles);
+                await _roleManager.CreateAsync(superAdminRole);
+            }
+            
+            // Create User role
+            var userRole = new IdentityRole<Guid>() { Name = "User", NormalizedName = "USER" };
+            var userRoleExist = await _roleManager.RoleExistsAsync(userRole.Name);
+            if (!userRoleExist)
+            {
+                await _roleManager.CreateAsync(userRole);
             }
 
             var superAdmin = new User()
@@ -61,9 +70,10 @@ namespace MultiTenantApp.Infrastructure.DataSeeder
             var result = await _userManager.CreateAsync(superAdmin, password);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(superAdmin, roles.Name);
+                await _userManager.AddToRoleAsync(superAdmin, superAdminRole.Name);
                 await _masterDbContext.SaveChangesAsync();
             }
         }
+        
     }
 }

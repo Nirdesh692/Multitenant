@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -6,11 +8,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using MultiTenantApp.Application.DTOs;
 using MultiTenantApp.Application.DTOs.Authentication;
 using MultiTenantApp.Application.Interfaces;
 using MultiTenantApp.Domain.Entities;
 using MultiTenantApp.Domain.Interfaces;
+using MultiTenantApp.Infrastructure.Identity;
 using MultiTenantApp.Infrastructure.Services;
 
 namespace MultiTenantApp.API.Controllers
@@ -56,30 +62,90 @@ namespace MultiTenantApp.API.Controllers
         [HttpPost("Login-User")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            var user = await _userManager.FindByNameAsync(loginDto.UserName) ?? await _userManager.FindByEmailAsync(loginDto.UserName);
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginDto.Password) && user.IsActive == true)
-            {
-                var role = await _userManager.GetRolesAsync(user);
+            var tenantId = HttpContext.Request.Headers["X-Tenant-ID"].FirstOrDefault();
+            User? user = null;
+            IList<string> roles = new List<string>();
+            string context = "master";
 
-                var Token = _jwtProvider.Generate(user, role);
+            if (string.IsNullOrEmpty(tenantId))
+            {
+                // Try master database authentication
+                user = await _userManager.FindByNameAsync(loginDto.UserName) ?? await _userManager.FindByEmailAsync(loginDto.UserName);
+                if (user != null && await _userManager.CheckPasswordAsync(user, loginDto.Password) && user.IsActive)
+                {
+                    roles = await _userManager.GetRolesAsync(user);
+                    context = "master";
+                }
+            }
+            else
+            {
+                // Try tenant database authentication
+                try
+                {
+                    var tenantContext = HttpContext.RequestServices.GetRequiredService<ITenantContextService>();
+                    var tenantDbContext = tenantContext.GetTenantDbContext();
+                    
+                    if (tenantDbContext != null)
+                    {
+                        // Ensure tenant database exists and is migrated
+                        await tenantDbContext.Database.EnsureCreatedAsync();
+                        
+                        // Create tenant-specific UserManager
+                        var tenantUserStore = new TenantUserStore(tenantContext);
+                        var options = HttpContext.RequestServices.GetRequiredService<IOptions<IdentityOptions>>();
+                        var passwordHasher = HttpContext.RequestServices.GetRequiredService<IPasswordHasher<User>>();
+                        var userValidators = HttpContext.RequestServices.GetRequiredService<IEnumerable<IUserValidator<User>>>();
+                        var passwordValidators = HttpContext.RequestServices.GetRequiredService<IEnumerable<IPasswordValidator<User>>>();
+                        var keyNormalizer = HttpContext.RequestServices.GetRequiredService<ILookupNormalizer>();
+                        var errors = HttpContext.RequestServices.GetRequiredService<IdentityErrorDescriber>();
+                        var services = HttpContext.RequestServices;
+                        var logger = HttpContext.RequestServices.GetRequiredService<ILogger<UserManager<User>>>();
+                        
+                        var tenantUserManager = new UserManager<User>(tenantUserStore, options, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger);
+                        
+                        user = await tenantUserManager.FindByNameAsync(loginDto.UserName) ?? await tenantUserManager.FindByEmailAsync(loginDto.UserName);
+                        if (user != null && await tenantUserManager.CheckPasswordAsync(user, loginDto.Password) && user.IsActive)
+                        {
+                            roles = await tenantUserManager.GetRolesAsync(user);
+                            context = "tenant";
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    // If tenant authentication fails, try master database
+                    user = await _userManager.FindByNameAsync(loginDto.UserName) ?? await _userManager.FindByEmailAsync(loginDto.UserName);
+                    if (user != null && await _userManager.CheckPasswordAsync(user, loginDto.Password) && user.IsActive)
+                    {
+                        roles = await _userManager.GetRolesAsync(user);
+                        context = "master";
+                    }
+                }
+            }
+
+            if (user != null && roles.Any())
+            {
+                var Token = _jwtProvider.Generate(user, roles);
                 var refreshToken = _jwtProvider.GenerateRefreshToken();
                 user.RefreshToken = refreshToken;
-
 
                 var userDto = new GetUserDto
                 {
                     Name = user.FirstName,
-                    Email = user.Email,
-                
+                    Email = user.Email!,
                 };
+                
                 var response = new
                 {
                     userDto,
                     Token,
-                    role
+                    role = roles,
+                    context = context,
+                    tenantId = tenantId
                 };
                 return Ok(new ResponseModel<Object>(true, response));
             }
+            
             return Unauthorized(new ResponseModel<LoginDto>(false, Data: null!, "InvalidLoginCredentials"));
         }
 

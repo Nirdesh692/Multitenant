@@ -1,19 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using MultiTenantApp.API.Middleware;
 using MultiTenantApp.Application.Interfaces;
 using MultiTenantApp.Application.Services;
 using MultiTenantApp.Domain.Entities;
 using MultiTenantApp.Domain.Interfaces;
 using MultiTenantApp.Infrastructure.Data;
 using MultiTenantApp.Infrastructure.DataSeeder;
+using MultiTenantApp.Infrastructure.Identity;
 using MultiTenantApp.Infrastructure.Repositories;
 using MultiTenantApp.Infrastructure.Services;
 
@@ -28,6 +36,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MasterDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterConnection")));
 
+// Register tenant context service
+builder.Services.AddScoped<ITenantContextService, TenantContextService>();
+
+// Configure Identity for Master database
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<MasterDbContext>()
     .AddDefaultTokenProviders();
@@ -37,41 +49,36 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-.AddJwtBearer();
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+    };
+});
 builder.Services.AddScoped<IJWTProvider, JWTProvider>();
 builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 builder.Services.AddScoped<ITenantService, TenantService>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, TenantUnitOfWork>();
 builder.Services.AddScoped<ITenantApplicationService, TenantApplicationService>();
 
 // Register DataSeeder 
 builder.Services.AddScoped<DataSeeder>();
 
-builder.Services.AddScoped<TenantDbContext>(provider =>
+// Register TenantDbContext as transient since it's created per request
+builder.Services.AddTransient<TenantDbContext>(provider =>
 {
-    var httpContext = provider.GetService<IHttpContextAccessor>()?.HttpContext;
-    var tenantId = httpContext?.Request.Headers["X-Tenant-ID"].FirstOrDefault();
-    
-    if (string.IsNullOrEmpty(tenantId))
-    {
-        throw new InvalidOperationException("Tenant ID is required");
-    }
-
-    var masterContext = provider.GetService<MasterDbContext>();
-    var tenant = masterContext?.Tenants.FirstOrDefault(t => t.Id.ToString() == tenantId);
-    
-    if (tenant == null)
-    {
-        throw new InvalidOperationException("Invalid tenant");
-    }
-
-    var tenantService = provider.GetService<ITenantService>();
-    var connectionString = tenantService?.BuildConnectionString(tenant) ?? string.Empty;
-
-    var optionsBuilder = new DbContextOptionsBuilder<TenantDbContext>();
-    optionsBuilder.UseSqlServer(connectionString);
-    
-    return new TenantDbContext(optionsBuilder.Options);
+    var tenantContextService = provider.GetRequiredService<ITenantContextService>();
+    var context = tenantContextService.GetTenantDbContext();
+    if (context == null)
+        throw new InvalidOperationException("Tenant context is required");
+    return context;
 });
 
 // Add services
@@ -92,6 +99,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<TenantMiddleware>();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
@@ -99,7 +108,7 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var masterContext = scope.ServiceProvider.GetRequiredService<MasterDbContext>();
-    masterContext.Database.EnsureCreatedAsync();
+    await masterContext.Database.EnsureCreatedAsync();
     var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
     await seeder.SeedDatabase();
 }

@@ -38,14 +38,14 @@ namespace MultiTenantApp.Infrastructure.Services
             }
 
             var signingCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!)),
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)),
                 SecurityAlgorithms.HmacSha256
             );
-            _= int.TryParse(_configuration["JWT:ExpireMinutes"], out int expireMinutes);
+            _= int.TryParse(_configuration["Jwt:TokenValidityInMinutes"], out int expireMinutes);
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:Issuer"],
-                audience: _configuration["JWT:Audience"],
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 null,
                 expires: DateTime.UtcNow.AddMinutes(expireMinutes),
@@ -68,10 +68,10 @@ namespace MultiTenantApp.Infrastructure.Services
                 ValidateAudience = true,
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!)),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)),
                 ValidateLifetime = true, 
-                ValidIssuer = _configuration["JWT:Issuer"],
-                ValidAudience = _configuration["JWT:Audience"]
+                ValidIssuer = _configuration["Jwt:Issuer"],
+                ValidAudience = _configuration["Jwt:Audience"]
             };
             try
             {

@@ -1,0 +1,47 @@
+### Test Master Database Login (SuperAdmin)
+POST http://localhost:5000/api/Authentication/Login-User
+Content-Type: application/json
+
+{
+  "userName": "superadmin",
+  "password": "SuperAdmin@123"
+}
+
+### Test Tenant Database Login (requires X-Tenant-ID header)
+POST http://localhost:5000/api/Authentication/Login-User
+Content-Type: application/json
+X-Tenant-ID: {{tenantId}}
+
+{
+  "userName": "testuser@example.com",
+  "password": "TestUser@123"
+}
+
+### Register User in Master Database (no tenant header)
+POST http://localhost:5000/api/Authentication/Register-User
+Content-Type: application/json
+
+{
+  "firstName": "Master",
+  "lastName": "Admin",
+  "email": "masteradmin@example.com",
+  "password": "MasterAdmin@123",
+  "confirmPassword": "MasterAdmin@123"
+}
+
+### Register User in Tenant Database (with tenant header)
+POST http://localhost:5000/api/Authentication/Register-User
+Content-Type: application/json
+X-Tenant-ID: {{tenantId}}
+
+{
+  "firstName": "Tenant",
+  "lastName": "User",
+  "email": "tenantuser@example.com",
+  "password": "TenantUser@123",
+  "confirmPassword": "TenantUser@123"
+}
+
+### Get Tenants (requires master authentication)
+GET http://localhost:5000/api/Tenants
+Authorization: Bearer {{masterToken}}

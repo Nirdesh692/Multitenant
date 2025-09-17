@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj": {}
+    "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj": {}
   },
   "projects": {
-    "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj": {
+    "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj",
+        "projectUniqueName": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj",
         "projectName": "MultiTenantApp.API",
-        "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj",
-        "packagesPath": "C:\\Users\\prakr\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.API\\obj\\",
+        "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.API\\MultiTenantApp.API.csproj",
+        "packagesPath": "C:\\Users\\Nirdesh\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\prakr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nirdesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
-                "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj"
+              "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
+                "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj"
               },
-              "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj": {
-                "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj"
+              "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj": {
+                "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj"
               }
             }
           }
@@ -91,12 +92,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.304, 9.0.304]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -109,20 +104,20 @@
         }
       }
     },
-    "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
+    "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
+        "projectUniqueName": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
         "projectName": "MultiTenantApp.Application",
-        "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
-        "packagesPath": "C:\\Users\\prakr\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\obj\\",
+        "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj",
+        "packagesPath": "C:\\Users\\Nirdesh\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\prakr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nirdesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -131,14 +126,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
-                "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj"
+              "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
+                "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj"
               }
             }
           }
@@ -183,12 +179,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.304, 9.0.304]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -198,20 +188,20 @@
         }
       }
     },
-    "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
+    "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
+        "projectUniqueName": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
         "projectName": "MultiTenantApp.Domain",
-        "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
-        "packagesPath": "C:\\Users\\prakr\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\obj\\",
+        "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\Nirdesh\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\prakr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nirdesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -220,6 +210,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -260,12 +251,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.304, 9.0.304]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -275,20 +260,20 @@
         }
       }
     },
-    "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj": {
+    "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj",
         "projectName": "MultiTenantApp.Infrastructure",
-        "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\prakr\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Infrastructure\\obj\\",
+        "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\MultiTenantApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Nirdesh\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\prakr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nirdesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -297,17 +282,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
-                "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj"
+              "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj": {
+                "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Application\\MultiTenantApp.Application.csproj"
               },
-              "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
-                "projectPath": "D:\\PersonalProjects\\att\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj"
+              "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj": {
+                "projectPath": "D:\\Github\\Attendance\\Multitenant\\src\\MultiTenantApp.Domain\\MultiTenantApp.Domain.csproj"
               }
             }
           }
@@ -376,12 +362,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.304, 9.0.304]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

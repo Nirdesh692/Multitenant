@@ -9,3 +9,16 @@ d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.D
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\refint\MultiTenantApp.Domain.dll
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.pdb
 d:\Github\Attendance\src\MultiTenantApp.Domain\obj\Debug\net9.0\ref\MultiTenantApp.Domain.dll
+D:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.deps.json
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.dll
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\bin\Debug\net9.0\MultiTenantApp.Domain.pdb
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.csproj.AssemblyReference.cache
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.AssemblyInfoInputs.cache
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.AssemblyInfo.cs
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.csproj.CoreCompileInputs.cache
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.sourcelink.json
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.dll
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\refint\MultiTenantApp.Domain.dll
+d:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\MultiTenantApp.Domain.pdb
+D:\Github\Attendance\Multitenant\src\MultiTenantApp.Domain\obj\Debug\net9.0\ref\MultiTenantApp.Domain.dll
