@@ -125,7 +125,7 @@ namespace MultiTenantApp.API.Controllers
 
             if (user != null && roles.Any())
             {
-                var Token = _jwtProvider.Generate(user, roles);
+                var Token = _jwtProvider.Generate(user, roles, tenantId);
                 var refreshToken = _jwtProvider.GenerateRefreshToken();
                 user.RefreshToken = refreshToken;
 

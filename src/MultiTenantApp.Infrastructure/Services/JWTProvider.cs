@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -15,17 +15,19 @@ namespace MultiTenantApp.Infrastructure.Services
     public class JWTProvider:IJWTProvider
     {
         private readonly IConfiguration _configuration;
+        
         public JWTProvider(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        public string Generate(User user, IList<string> roles)
+        public string Generate(User user, IList<string> roles,string? TenantId)
         {
             var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(ClaimTypes.Email, user.Email!),
+                new Claim("tenantId", TenantId),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

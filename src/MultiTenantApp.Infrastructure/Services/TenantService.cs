@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using MultiTenantApp.Domain.Entities;
 using MultiTenantApp.Domain.Interfaces;
 using MultiTenantApp.Infrastructure.Data;
@@ -15,15 +19,13 @@ public class TenantService : ITenantService
 {
     private readonly MasterDbContext _masterContext;
     private readonly IConfiguration _configuration;
-    private readonly RoleManager<IdentityRole<Guid>> _roleManager;
-    private readonly UserManager<User> _userManager;
+    private readonly IServiceProvider _serviceProvider;
 
-    public TenantService(MasterDbContext masterContext, IConfiguration configuration, UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager)
+    public TenantService(MasterDbContext masterContext, IConfiguration configuration, IServiceProvider serviceProvider)
     {
         _masterContext = masterContext;
         _configuration = configuration;
-        _userManager = userManager;
-        _roleManager = roleManager;
+        _serviceProvider = serviceProvider;
     }
 
     public async Task<Tenant> CreateTenantAsync(string name, string server, string database, string? userId, string? password, bool useWindowsAuth, string frontendUrl)
@@ -75,26 +77,43 @@ public class TenantService : ITenantService
     {
         var templateKey = tenant.UseWindowsAuth ? "TenantTemplateWindows" : "TenantTemplateSql";
         var template = _configuration.GetConnectionString(templateKey) ?? string.Empty;
-        
+
         var connectionString = template
             .Replace("{Server}", tenant.Server)
             .Replace("{Database}", tenant.Database);
-            
+
         if (!tenant.UseWindowsAuth)
         {
             connectionString = connectionString
                 .Replace("{UserId}", tenant.UserId ?? string.Empty)
                 .Replace("{Password}", tenant.Password ?? string.Empty);
         }
-        
+
         return connectionString;
     }
     public async Task SeedUserAndRoleAsync(TenantDbContext context)
     {
-        if(await context.Users.AnyAsync())
+        if (await context.Users.AnyAsync())
         {
             return;
         }
+        var userStore = new UserStore<User, IdentityRole<Guid>, TenantDbContext, Guid>(context);
+        var roleStore = new RoleStore<IdentityRole<Guid>, TenantDbContext, Guid>(context);
+
+        var userManager = new UserManager<User>(userStore,
+            _serviceProvider.GetRequiredService<IOptions<IdentityOptions>>(),
+            _serviceProvider.GetRequiredService<IPasswordHasher<User>>(),
+            _serviceProvider.GetRequiredService<IEnumerable<IUserValidator<User>>>(),
+            _serviceProvider.GetRequiredService<IEnumerable<IPasswordValidator<User>>>(),
+            _serviceProvider.GetRequiredService<ILookupNormalizer>(),
+            _serviceProvider.GetRequiredService<IdentityErrorDescriber>(),
+            _serviceProvider,
+            _serviceProvider.GetRequiredService<ILogger<UserManager<User>>>());
+        var roleManager = new RoleManager<IdentityRole<Guid>>(roleStore,
+            _serviceProvider.GetRequiredService<IEnumerable<IRoleValidator<IdentityRole<Guid>>>>(),
+            _serviceProvider.GetRequiredService<ILookupNormalizer>(),
+            _serviceProvider.GetRequiredService<IdentityErrorDescriber>(),
+            _serviceProvider.GetRequiredService<ILogger<RoleManager<IdentityRole<Guid>>>>());
         var roles = new List<IdentityRole<Guid>>()
         {
             new IdentityRole<Guid>() { Name = "Admin", NormalizedName = "ADMIN" },
@@ -102,11 +121,11 @@ public class TenantService : ITenantService
         };
         foreach (var item in roles)
         {
-            var roleExist = await _roleManager.RoleExistsAsync(item.Name!);
+            var roleExist = await roleManager.RoleExistsAsync(item.Name!);
 
             if (!roleExist)
             {
-                var roleResult= await _roleManager.CreateAsync(item);
+                var roleResult = await roleManager.CreateAsync(item);
                 if (!roleResult.Succeeded)
                 {
                     throw new Exception($"Failed to create role {item.Name}: {string.Join(", ", roleResult.Errors.Select(e => e.Description))}");
@@ -121,11 +140,11 @@ public class TenantService : ITenantService
             NormalizedUserName = "ADMIN",
 
         };
-        var password = "Admin@123"; 
-        var result = await _userManager.CreateAsync(admin, password);
+        var password = "Admin@123";
+        var result = await userManager.CreateAsync(admin, password);
         if (result.Succeeded)
         {
-            var addRoleResult = await _userManager.AddToRoleAsync(admin, "Admin");
+            var addRoleResult = await userManager.AddToRoleAsync(admin, "Admin");
             if (!addRoleResult.Succeeded)
             {
                 throw new Exception($"Failed to assign role to admin user: {string.Join(", ", addRoleResult.Errors.Select(e => e.Description))}");
