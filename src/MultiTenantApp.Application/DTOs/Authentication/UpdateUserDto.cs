@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiTenantApp.Application.DTOs.Authentication
+namespace Attendance.Application.DTOs.Authentication
 {
     public class UpdateUserDto
     {

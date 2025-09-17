@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MultiTenantApp.Application.DTOs;
-using MultiTenantApp.Application.Interfaces;
-using MultiTenantApp.Domain.Interfaces;
+using Attendance.Application.DTOs;
+using Attendance.Application.Interfaces;
+using Attendance.Domain.Interfaces;
 
-namespace MultiTenantApp.Application.Services;
+namespace Attendance.Application.Services;
 
 public class TenantApplicationService : ITenantApplicationService
 {

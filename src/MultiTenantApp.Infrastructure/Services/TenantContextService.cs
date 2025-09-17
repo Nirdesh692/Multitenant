@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using MultiTenantApp.Domain.Interfaces;
-using MultiTenantApp.Infrastructure.Data;
+using Attendance.Domain.Interfaces;
+using Attendance.Infrastructure.Data;
 using System;
 using System.Linq;
 
-namespace MultiTenantApp.Infrastructure.Services
+namespace Attendance.Infrastructure.Services
 {
     public interface ITenantContextService
     {

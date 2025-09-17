@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using MultiTenantApp.Application.DTOs.Authentication;
-using MultiTenantApp.Application.Interfaces;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
+using Attendance.Application.DTOs.Authentication;
+using Attendance.Application.Interfaces;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
 
-namespace MultiTenantApp.Application.Services
+namespace Attendance.Application.Services
 {
     public class AuthenticateService: IAuthenticateService
     {

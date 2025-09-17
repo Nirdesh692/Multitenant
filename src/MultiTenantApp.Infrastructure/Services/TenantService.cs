@@ -9,11 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
-using MultiTenantApp.Infrastructure.Data;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
+using Attendance.Infrastructure.Data;
 
-namespace MultiTenantApp.Infrastructure.Services;
+namespace Attendance.Infrastructure.Services;
 
 public class TenantService : ITenantService
 {

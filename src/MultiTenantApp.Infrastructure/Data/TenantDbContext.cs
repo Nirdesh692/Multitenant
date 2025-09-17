@@ -2,9 +2,9 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MultiTenantApp.Domain.Entities;
+using Attendance.Domain.Entities;
 
-namespace MultiTenantApp.Infrastructure.Data;
+namespace Attendance.Infrastructure.Data;
 
 public class TenantDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {

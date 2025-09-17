@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Infrastructure.Data;
-using MultiTenantApp.Infrastructure.Services;
+using Attendance.Domain.Entities;
+using Attendance.Infrastructure.Data;
+using Attendance.Infrastructure.Services;
 using System;
 
-namespace MultiTenantApp.Infrastructure.Identity
+namespace Attendance.Infrastructure.Identity
 {
     public class TenantUserStore : UserStore<User, IdentityRole<Guid>, TenantDbContext, Guid>
     {

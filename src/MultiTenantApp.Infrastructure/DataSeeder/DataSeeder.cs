@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Transactions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Infrastructure.Data;
+using Attendance.Domain.Entities;
+using Attendance.Infrastructure.Data;
 
-namespace MultiTenantApp.Infrastructure.DataSeeder
+namespace Attendance.Infrastructure.DataSeeder
 {
     public class DataSeeder
     {

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MultiTenantApp.API.Middleware
+namespace Attendance.API.Middleware
 {
     public class TenantMiddleware
     {

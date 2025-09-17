@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
-using MultiTenantApp.Domain.Entities;
+using Attendance.Domain.Entities;
 
-namespace MultiTenantApp.Domain.Interfaces
+namespace Attendance.Domain.Interfaces
 {
     public interface IJWTProvider
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace MultiTenantApp.Application.DTOs;
+namespace Attendance.Application.DTOs;
 
 public class TenantDto
 {

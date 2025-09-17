@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
-using MultiTenantApp.Infrastructure.Data;
-using MultiTenantApp.Infrastructure.Services;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
+using Attendance.Infrastructure.Data;
+using Attendance.Infrastructure.Services;
 
-namespace MultiTenantApp.Infrastructure.Repositories
+namespace Attendance.Infrastructure.Repositories
 {
     public class TenantUnitOfWork : IUnitOfWork, IDisposable
     {

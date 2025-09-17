@@ -1,4 +1,4 @@
-﻿namespace MultiTenantApp.Application.DTOs.Authentication
+﻿namespace Attendance.Application.DTOs.Authentication
 {
     public class GetUserDto
     {

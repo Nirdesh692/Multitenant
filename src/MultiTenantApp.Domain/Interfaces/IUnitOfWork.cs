@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using MultiTenantApp.Domain.Entities;
+using Attendance.Domain.Entities;
 
-namespace MultiTenantApp.Domain.Interfaces;
+namespace Attendance.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {

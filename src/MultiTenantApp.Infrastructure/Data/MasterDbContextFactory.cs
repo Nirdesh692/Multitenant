@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO; 
 
-namespace MultiTenantApp.Infrastructure.Data;
+namespace Attendance.Infrastructure.Data;
 
 public class MasterDbContextFactory : IDesignTimeDbContextFactory<MasterDbContext>
 {

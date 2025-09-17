@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MultiTenantApp.Application.DTOs;
-using MultiTenantApp.Application.Interfaces;
+using Attendance.Application.DTOs;
+using Attendance.Application.Interfaces;
 
-namespace MultiTenantApp.API.Controllers;
+namespace Attendance.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

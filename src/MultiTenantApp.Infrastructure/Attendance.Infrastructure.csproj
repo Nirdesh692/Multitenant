@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultiTenantApp.Domain\MultiTenantApp.Domain.csproj" />
-    <ProjectReference Include="..\MultiTenantApp.Application\MultiTenantApp.Application.csproj" />
+    <ProjectReference Include="..\MultiTenantApp.Domain\Attendance.Domain.csproj" />
+    <ProjectReference Include="..\MultiTenantApp.Application\Attendance.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.9" />

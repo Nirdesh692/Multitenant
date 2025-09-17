@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MultiTenantApp.Application.DTOs;
+using Attendance.Application.DTOs;
 
-namespace MultiTenantApp.Application.Interfaces;
+namespace Attendance.Application.Interfaces;
 
 public interface ITenantApplicationService
 {

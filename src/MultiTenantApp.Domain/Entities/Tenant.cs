@@ -1,4 +1,4 @@
-namespace MultiTenantApp.Domain.Entities;
+namespace Attendance.Domain.Entities;
 
 public class Tenant : BaseEntity
 {

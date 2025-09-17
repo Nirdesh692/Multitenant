@@ -11,15 +11,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MultiTenantApp.Application.DTOs;
-using MultiTenantApp.Application.DTOs.Authentication;
-using MultiTenantApp.Application.Interfaces;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
-using MultiTenantApp.Infrastructure.Identity;
-using MultiTenantApp.Infrastructure.Services;
+using Attendance.Application.DTOs;
+using Attendance.Application.DTOs.Authentication;
+using Attendance.Application.Interfaces;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
+using Attendance.Infrastructure.Identity;
+using Attendance.Infrastructure.Services;
 
-namespace MultiTenantApp.API.Controllers
+namespace Attendance.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MultiTenantApp.Application.DTOs.Authentication;
+using Attendance.Application.DTOs.Authentication;
 
-namespace MultiTenantApp.Application.Interfaces
+namespace Attendance.Application.Interfaces
 {
     public interface IAuthenticateService
     {

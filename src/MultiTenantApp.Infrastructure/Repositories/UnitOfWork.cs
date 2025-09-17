@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
-using MultiTenantApp.Infrastructure.Data;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
+using Attendance.Infrastructure.Data;
 
-namespace MultiTenantApp.Infrastructure.Repositories;
+namespace Attendance.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

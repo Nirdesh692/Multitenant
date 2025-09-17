@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiTenantApp.Application.DTOs
+namespace Attendance.Application.DTOs
 {
     public class ResponseModel<T>
     {

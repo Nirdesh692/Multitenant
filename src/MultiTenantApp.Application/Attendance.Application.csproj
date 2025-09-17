@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultiTenantApp.Domain\MultiTenantApp.Domain.csproj" />
+    <ProjectReference Include="..\MultiTenantApp.Domain\Attendance.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />

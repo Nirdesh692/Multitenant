@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace MultiTenantApp.Domain.Interfaces;
+namespace Attendance.Domain.Interfaces;
 
 public interface IRepository<TEntity> where TEntity : class
 {

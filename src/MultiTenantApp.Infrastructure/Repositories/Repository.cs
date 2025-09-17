@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MultiTenantApp.Domain.Interfaces;
+using Attendance.Domain.Interfaces;
 
-namespace MultiTenantApp.Infrastructure.Repositories;
+namespace Attendance.Infrastructure.Repositories;
 
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {

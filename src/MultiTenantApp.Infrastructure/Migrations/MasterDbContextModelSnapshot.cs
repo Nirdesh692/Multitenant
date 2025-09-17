@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MultiTenantApp.Infrastructure.Data;
+using Attendance.Infrastructure.Data;
 
 #nullable disable
 
-namespace MultiTenantApp.Infrastructure.Migrations
+namespace Attendance.Infrastructure.Migrations
 {
     [DbContext(typeof(MasterDbContext))]
     partial class MasterDbContextModelSnapshot : ModelSnapshot
@@ -153,7 +153,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MultiTenantApp.Domain.Entities.Tenant", b =>
+            modelBuilder.Entity("Attendance.Domain.Entities.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,7 +204,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
                     b.ToTable("Tenants");
                 });
 
-            modelBuilder.Entity("MultiTenantApp.Domain.Entities.User", b =>
+            modelBuilder.Entity("Attendance.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -304,7 +304,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("MultiTenantApp.Domain.Entities.User", null)
+                    b.HasOne("Attendance.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -313,7 +313,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("MultiTenantApp.Domain.Entities.User", null)
+                    b.HasOne("Attendance.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -328,7 +328,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MultiTenantApp.Domain.Entities.User", null)
+                    b.HasOne("Attendance.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -337,7 +337,7 @@ namespace MultiTenantApp.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("MultiTenantApp.Domain.Entities.User", null)
+                    b.HasOne("Attendance.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Domain.Interfaces;
+using Attendance.Domain.Entities;
+using Attendance.Domain.Interfaces;
 
-namespace MultiTenantApp.Infrastructure.Services
+namespace Attendance.Infrastructure.Services
 {
     public class JWTProvider:IJWTProvider
     {

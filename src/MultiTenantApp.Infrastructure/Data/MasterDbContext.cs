@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MultiTenantApp.Domain.Entities;
-using MultiTenantApp.Infrastructure.DataSeeder;
+using Attendance.Domain.Entities;
+using Attendance.Infrastructure.DataSeeder;
 
-namespace MultiTenantApp.Infrastructure.Data
+namespace Attendance.Infrastructure.Data
 {
     public class MasterDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {

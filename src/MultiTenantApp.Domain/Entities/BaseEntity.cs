@@ -1,6 +1,6 @@
 using System;
 
-namespace MultiTenantApp.Domain.Entities;
+namespace Attendance.Domain.Entities;
 
 public abstract class BaseEntity
 {

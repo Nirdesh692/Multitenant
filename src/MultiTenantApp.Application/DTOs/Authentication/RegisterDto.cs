@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MultiTenantApp.Application.DTOs.Authentication
+namespace Attendance.Application.DTOs.Authentication
 {
     public class RegisterDto
     {
